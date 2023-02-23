@@ -1,0 +1,22 @@
+<div class="container text-center">
+  <h1>My Tasks</h1>
+  <ul>
+    <% @tasks.each do |task| %>
+      <% if task.completed? %>
+        <i class="fa fa-check-square-o" aria-hidden="true"></i>
+      <% else %>
+        <i class="fa fa-square-o" aria-hidden="true"></i>
+      <% end %>
+      <%= link_to task.title, task_path(task.id) %> ·
+      <%= link_to task_path(task.id), data: {turbo_method: :delete, turbo_confirm: "Delete #{task.title}?"} do %>
+        <i class="fa fa-trash-o"></i> <br>
+      <% end %>
+    <% end %>
+  </ul>
+
+  <hr>
+
+    <%= link_to new_task_path do %>
+    <button type="button" class="btn btn-primary">Add a new task</button>
+    <% end %>
+</div>

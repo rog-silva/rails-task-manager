@@ -1,0 +1,25 @@
+<div class="container text-center">
+  <h1>Your task "<%= @task.title %>"</h1>
+
+  <p class="well"><%= @task.details %></p>
+
+  <%= form_for @task, url: task_path(@task), method: :patch do |f| %>
+    <div class="form-check">
+      <%= f.check_box :completed, class: "form-check-input", onchange: "this.form.submit()" %>
+      <% if @task.completed %>
+        <label class="form-check-label" for="<%= f.object.id %>">This task is completed</label>
+      <% else %>
+        <label class="form-check-label" for="<%= f.object.id %>">This task is not completed yet</label>
+      <% end %>
+    </div>
+  <% end %>
+
+  <hr>
+  <%= link_to edit_task_path(@task.id) do %>
+    <i class="fa fa-pencil-square-o"></i> Edit this task
+  <% end %>
+  <br>
+  <%= link_to tasks_path do %>
+    <i class="fa fa-history"></i> Go back
+  <% end %>
+</div>

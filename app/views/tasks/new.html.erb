@@ -1,0 +1,10 @@
+<div class="container text-center">
+  <h1>Create new task</h1>
+
+  <%= render "form", task: @task %>
+
+  <hr>
+  <%= link_to tasks_path do %>
+    <i class="fa fa-history"></i> Go back
+  <% end %>
+</div>
